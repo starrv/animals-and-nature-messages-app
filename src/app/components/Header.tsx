@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import leaf from "../images/leaf.jpg";
+import Nav from './Nav';
 
 export default function Header(){
     return(
@@ -8,6 +9,7 @@ export default function Header(){
              <h1>
                 Animals and Nature Messages
             </h1>
+            <Nav />
         </header>
     );
 }

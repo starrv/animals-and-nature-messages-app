@@ -51,6 +51,38 @@ input[type="submit"]{
 }
 
 .messages{
-  width:50%;
   margin:1rem auto;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+.message{
+  width:25%;
+}
+
+a{
+  margin:1rem;
+  color: green;
+  font-weight:900;
+  text-decoration: none;
+  text-align: center;
+  font-size:1.5rem;
+}
+
+.nav-bar{
+  width:100%;
+  margin:1rem auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media screen and (max-width:600px) {
+  .message{
+    width:75%;
+  }
+  .nav-bar{
+    flex-direction: column;
+  }
 }

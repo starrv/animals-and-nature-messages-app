@@ -1,15 +1,18 @@
 import Message from "./Message"
 
 export default function Messages(){
-    const messages=["message 1","message 2","message 3","message 4"];
+    const messages=[];
+    for(let i=0; i<100; i++){
+        messages.push(`Message ${i+1}`);
+    }
     return(
-        <div className="messages">
+        <>
             <h1>
                 Messages
             </h1>
-            <ul>
+            <div className="messages">
                 {messages.map(msg =><Message message={msg} />)}
-            </ul>
-        </div>
+            </div>
+        </>
     )
 }
