@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap');
+
+html,body{
+  margin:0;
+  padding:0;
+  font-family: "Arimo",sans-serif;
+}
+
+header{
+  background-color: #e4f5e5;
+  margin:0;
+  padding:1rem;
+}
+
+h1{
+  text-align: center;
+}
+
+.icon{
+  margin:0 auto;
+  text-align: center;
+}
+
+form, input,.message{
+  border: solid 1px #6c757d;
+  border-radius: 5px;
+  margin:1rem auto;
+  padding:.5rem;
+  text-align: center;
+}
+
+form{
+  background-color: #ebe1bc;
+  width:50%;
+  text-align: center;
+}
+
+label{
+  font-weight: 900;
+}
+
+input{
+  position:sticky;
+  left:50%;
+}
+
+input[type="submit"]{
+  background-color: green;
+  color:white;
+  font-weight: 400;
+}
+
+.messages{
+  width:50%;
+  margin:1rem auto;
+}
