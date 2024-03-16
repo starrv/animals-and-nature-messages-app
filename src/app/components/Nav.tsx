@@ -7,6 +7,9 @@ export default function Nav(){
             <a href="/messages">
                 Messages
             </a>
+            <a href="/login">
+                Login
+            </a>
         </nav>
     );
 }
