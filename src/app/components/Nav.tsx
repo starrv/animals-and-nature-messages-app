@@ -1,11 +1,10 @@
 'use client';
 
 import Login from './Login';
-import { useSession, signIn, signOut } from "next-auth/react"
 
-export default function Nav(){
+export default function Nav({session}){
 
-    const { data: session,status } = useSession()
+   
     let messages=null;
     if(status==="authenticated"){
         messages= <a href="/messages">

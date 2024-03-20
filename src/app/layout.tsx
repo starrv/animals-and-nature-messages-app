@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./css/globals.css";
-import Header from "./components/Header";
+import Content from "./components/Content";
 
 export const metadata: Metadata = {
   title: "Animals and Nature Messages",
@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Header />
+        <Content />
         {children}
       </body>
     </html>
