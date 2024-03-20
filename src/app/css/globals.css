@@ -61,7 +61,7 @@ input[type="submit"]{
   width:25%;
 }
 
-a{
+a,.login,.logout{
   margin:1rem;
   color: green;
   font-weight:900;
@@ -76,6 +76,12 @@ a{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.login,.logout{
+  border:none;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 @media screen and (max-width:600px) {

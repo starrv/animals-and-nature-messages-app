@@ -29,6 +29,10 @@ export const authOptions = {
       return session
     }
   },
+  userinfo: {
+    url: "http://localhost:3000/oauth/userinfo",
+    params: { some: "param" }
+  },
   secret:process.env.NEXT_PUBLIC_SECRET
 }
 const handler=NextAuth(authOptions);

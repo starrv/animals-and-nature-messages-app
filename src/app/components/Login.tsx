@@ -8,24 +8,23 @@ export default function Login(){
     let body=null;
     
     if(status==="authenticated"){
+        console.log("Session: ",session);
         console.log("You are logged in as:",session.user);
+        console.log("User Image: ",session.user?.image);
         console.log("Access Token: ",session.accessToken);
         body=(
             <>
-                <div>
-                    <button onClick={()=>signOut('okta')}>logout</button>
-                </div>
+                
+                    <button className="logout" onClick={()=>signOut('okta')}>Logout</button>
             </>
            
         );
     }
     else{
-        console.log("Please login");
         body=(
             <>
-                <div>
-                    <button onClick={()=>signIn('okta')}>Login</button>
-                </div>
+               
+                    <button className="login" onClick={()=>signIn('okta',{ prompt: 'login' })}>Login</button>
             </>
         );
     }

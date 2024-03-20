@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./css/globals.css";
 import Header from "./components/Header";
-import { SessionProvider } from "next-auth/react"
 
 export const metadata: Metadata = {
   title: "Animals and Nature Messages",
@@ -9,14 +8,15 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
-      <body><Header />
-      {children}
+      <body>
+        <Header />
+        {children}
       </body>
     </html>
   );
