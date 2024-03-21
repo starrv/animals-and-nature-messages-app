@@ -1,8 +1,6 @@
 import NextAuth from "next-auth";
 import OktaProvider from "next-auth/providers/okta";
 
-console.log("Client ID: ",process.env.NEXT_PUBLIC_CLIENT_ID);
-
 export const authOptions = {
   // Configure one or more authentication providers
   providers: [

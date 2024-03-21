@@ -84,6 +84,24 @@ a,.login,.logout{
   cursor: pointer;
 }
 
+.user-info{
+  animation:2s linear 1s infinite toggle;
+  font-size:1em;
+}
+
+.message-content{
+  word-wrap:break-word;
+}
+
+@keyframes toggle {
+  to{
+    color:white;
+  }
+  from{
+    color:black;
+  }
+}
+
 @media screen and (max-width:600px) {
   .message{
     width:75%;
