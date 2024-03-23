@@ -6,6 +6,9 @@ export default function Login(){
     const { data: session,status } = useSession()
     let body=null;
     
+    console.log("Access Token: ",session?.accessToken);
+    console.log("Refresh Token: ",session?.refreshToken);
+
     if(status==="authenticated"){
         body=(
             <>

@@ -93,6 +93,14 @@ a,.login,.logout{
   word-wrap:break-word;
 }
 
+.no-messages,.error-msg,.home-page-msg,.loading{
+  text-align: center;
+}
+
+.error-msg{
+  color:red;
+}
+
 @keyframes toggle {
   to{
     color:white;
