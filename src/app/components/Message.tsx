@@ -1,9 +1,15 @@
 import MessageContent from "./MessageContent";
+import {useState} from "react";
 
 export default function Message({message}){
+
+    const [viewMore,setViewMore]=useState(false);
+
+    function toggleViewMore(){
+        setViewMore(!viewMore);
+    }
+
     const messageContent=atob(message.content);
-    console.log("Message Content: ",messageContent);
-    console.log("Message Headers: ",message.mail.headers);
     let subject=null;
     let datetime=null;
     for(let i=0; i<message.mail.headers.length; i++){
@@ -20,7 +26,10 @@ export default function Message({message}){
           <p>
             {datetime?new Date(message.mail.timestamp).toLocaleString('en-US').toString():"No date"}
           </p>
-           <MessageContent content={messageContent} />
+          <p className="toggle-view-more" onClick={toggleViewMore}>
+            {viewMore ? <span>View Less</span> : <span>View More</span>}
+          </p>
+           {viewMore ? <MessageContent content={messageContent} /> : null}
         </div>
     )
 }

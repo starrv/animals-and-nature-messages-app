@@ -6,14 +6,11 @@ export default function Login(){
     const { data: session,status } = useSession()
     let body=null;
     
-    console.log("Access Token: ",session?.accessToken);
-    console.log("Refresh Token: ",session?.refreshToken);
-
     if(status==="authenticated"){
         body=(
             <>
                 
-                    <button className="logout" onClick={()=>signOut('okta')}>Logout</button>
+                <button className="logout" onClick={()=>signOut('okta')}>Logout</button>
             </>
            
         );
@@ -22,7 +19,7 @@ export default function Login(){
         body=(
             <>
                
-                    <button className="login" onClick={()=>signIn('okta',{ prompt: 'login' })}>Login</button>
+                <button className="login" onClick={()=>signIn('okta',{ prompt: 'login' })}>Login</button>
             </>
         );
     }

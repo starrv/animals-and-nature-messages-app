@@ -11,7 +11,7 @@ export default function HomePage() {
        <h1>
         Welcome!!
        </h1>
-       <p className="home-page-msg">For any inquiries please contact us at webmaster@animalsandnature.org</p>
+       <p className="home-page-msg">For any inquiries please contact us at <a href="mailto: webmaster@animalsandnature.org" style={{color:"green", textDecoration:"underline"}}>webmaster@animalsandnature.org</a>.</p>
       </div>
     </main>
   );

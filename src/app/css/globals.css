@@ -55,13 +55,17 @@ input[type="submit"]{
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
+  justify-content: center;
+  align-items: baseline;
 }
 
 .message{
   width:25%;
+  border:solid 1px black;
+  background: radial-gradient(white,#e4f5e5);
 }
 
-a,.login,.logout{
+ nav a,.login,.logout{
   margin:1rem;
   color: green;
   font-weight:900;
@@ -95,10 +99,17 @@ a,.login,.logout{
 
 .no-messages,.error-msg,.home-page-msg,.loading{
   text-align: center;
+  margin:1rem auto;
 }
 
 .error-msg{
   color:red;
+}
+
+.toggle-view-more{
+  cursor: pointer;
+  color:brown;
+  text-decoration: underline;
 }
 
 @keyframes toggle {

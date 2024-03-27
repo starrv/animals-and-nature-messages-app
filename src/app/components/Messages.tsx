@@ -21,32 +21,26 @@ export default function Messages(){
     
     async function getMessages(){
         const URL="http://localhost:8080/messages";
-        console.log("Session: ",session);
         const accessToken=session?.accessToken;
-        console.log("Access Token: ",accessToken);
 
         const resp=await fetch(URL,{
             headers:{
                 "Authorization":`Bearer ${accessToken}`
             }
         });
-        console.log("Response: ",resp);
         if(resp.ok){
             const messages=await resp.json();
-            console.log(messages);
             setLoading("");
             setErrorMsg("");
             setMessages(messages);
         }
         else{
             if(accessToken){
-                console.error("Unauthorized");
                 setLoading("");
                 setMessages([]);
                 setErrorMsg(errorTxt);
             }
             else{
-                console.log("loading....");
                 setLoading("Loading....");
             }
         }
@@ -58,17 +52,17 @@ export default function Messages(){
 
     let content=null;
     if(errorMsg){
-        content=<p className="error-msg">{errorTxt}</p>
+        content=<div className="messages"><p className="error-msg">{errorTxt}</p></div>
     }
     else if(loading){
-        content=<p className="loading">loading....</p>
+        content=<div className="messages"><p className="loading">loading....</p></div>
     }
     else{
         if(messages.length>0){
-            content=messages.map(msg =><Message message={msg} key={msg.id} />);
+            content=<div className="messages">{messages.map(msg =><Message message={msg} key={msg.id} />)}</div>
         }
         else{
-           content=<p className="no-messages">No Messages</p>
+           content=<div className="messages"><p className="no-messages">No Messages</p></div>
         }
     }
 
