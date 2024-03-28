@@ -21,6 +21,8 @@ export interface Header{
     value:string;
 }
 
+let interval:ReturnType<typeof setInterval>;
+
 export default function Messages(){
   
     const [messages,setMessages]=useState([]);
@@ -79,9 +81,11 @@ export default function Messages(){
 
     useEffect(()=>{
         getMessages()
-        setInterval(()=>{
-            setTimer(timer=>timer+1)
-        },30000);
+        if(!interval){
+                interval=setInterval(()=>{
+                setTimer(timer=>timer+1)
+            },30000);
+        }
     },[session,timer]);
 
     let content;
