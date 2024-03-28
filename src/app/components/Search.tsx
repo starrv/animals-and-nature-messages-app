@@ -1,4 +1,4 @@
-export default function Search({filterBy, setFilterBy}){
+export default function Search({filterBy, setFilterBy}:{filterBy:string,setFilterBy:Function}){
 
     return(
         <div className="search">

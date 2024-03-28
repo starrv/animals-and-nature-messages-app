@@ -4,6 +4,23 @@ import Search from "./Search";
 import {useState,useEffect} from 'react';
 import {useSession} from "next-auth/react";
 
+export interface Message{
+    id: string;
+    notificationType:string;
+    mail:Mail;
+    content:string
+}
+
+export interface Mail{
+   headers:Header[];
+   timestamp:string;
+}
+
+export interface Header{
+    name:string;
+    value:string;
+}
+
 export default function Messages(){
   
     const [messages,setMessages]=useState([]);
@@ -18,7 +35,7 @@ export default function Messages(){
     const errorTxt="An error has occurred.  Please contact IT Support.";
     
     async function getMessages(){
-        const URL=process.env.NEXT_PUBLIC_MESSAGES_URL;
+        const URL=process.env.NEXT_PUBLIC_MESSAGES_URL as string;
         const accessToken=session?.accessToken;
 
         const resp=await fetch(URL,{
@@ -44,7 +61,7 @@ export default function Messages(){
         }
     }
 
-    function hasSubject(message, subject){
+    function hasSubject(message:Message, subject:string){
         for(let i=0; i<message.mail.headers.length; i++){
             if(message.mail.headers[i].name.toLowerCase()==="subject" && message.mail.headers[i].value.includes(subject)){
                 return true;
@@ -53,7 +70,7 @@ export default function Messages(){
         return false;
     }
 
-    function hasDate(message, date){
+    function hasDate(message:Message, date:string){
         const formattedDate=new Date(message.mail.timestamp).toLocaleString('en-US').toString();
         console.log("Date: ",date);
         console.log("Formatted Date: ",formattedDate);
