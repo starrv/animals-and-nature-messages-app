@@ -30,9 +30,9 @@ const authOptions = {
       const idTokenDetails=JSON.parse(atob(token.idToken.split(".")[1]));
       const tokenExp=idTokenDetails.exp*1000;
       const hasTokenExpired=dateNow>tokenExp;
-    
+      const tokenURL=process.env.TOKEN_URL||"";
       if(hasTokenExpired){
-        const resp=await fetch(TOKEN_URL,{
+        const resp=await fetch(tokenURL,{
           method:"POST",
           headers:{
             "accept":"application/json",
