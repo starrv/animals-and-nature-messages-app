@@ -19,7 +19,6 @@ export default function Messages(){
     
     async function getMessages(){
         const URL="http://localhost:8080/messages";
-        console.log("Session: ",session);
         const accessToken=session?.accessToken;
 
         const resp=await fetch(URL,{
