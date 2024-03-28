@@ -10,7 +10,7 @@ export default function Login(){
         body=(
             <>
                 
-                <button className="logout" onClick={()=>signOut('okta')}>Logout</button>
+                <button className="logout" onClick={()=>signOut({ callbackUrl: 'http://localhost:3000/' })}>Logout</button>
             </>
            
         );
