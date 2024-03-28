@@ -136,6 +136,10 @@ input,button{
   text-decoration: underline;
 }
 
+img{
+  border-radius:5px;
+}
+
 @keyframes toggle {
   to{
     color:white;
