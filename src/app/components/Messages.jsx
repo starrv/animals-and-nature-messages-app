@@ -2,7 +2,7 @@
 import Message from "./Message";
 import Search from "./Search";
 import {useState,useEffect} from 'react';
-import {useSession,signIn} from "next-auth/react";
+import {useSession} from "next-auth/react";
 
 export default function Messages(){
   
@@ -10,7 +10,7 @@ export default function Messages(){
     const [timer,setTimer]=useState(0);
     const [filterBy,setFilterBy]=useState("");
 
-    const {data:session,status}=useSession();
+    const {data:session}=useSession();
 
     const [errorMsg,setErrorMsg]=useState("");
     const [loading,setLoading]=useState("loading....");
@@ -19,6 +19,7 @@ export default function Messages(){
     
     async function getMessages(){
         const URL="http://localhost:8080/messages";
+        console.log("Session: ",session);
         const accessToken=session?.accessToken;
 
         const resp=await fetch(URL,{

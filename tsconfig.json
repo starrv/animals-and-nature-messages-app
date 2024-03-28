@@ -12,7 +12,6 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "noImplicitAny": false,
     "plugins": [
       {
         "name": "next"
@@ -22,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/api/auth/[...nextauth]/route.jsx", "src/app/page.jsx", "src/app/layout.jsx", "src/app/content/layout.jsx", "src/app/components/Nav.jsx", "src/app/components/Message.jsx", "src/app/components/Login.jsx", "src/app/components/Header.jsx", "src/app/components/Content.jsx", "src/app/components/Search.jsx", "src/app/components/Messages.jsx", "src/app/components/MessageContent.jsx", "src/app/components/Messages.jsx", "src/app/components/MessageContent.jsx", "src/app/components/Messages.jsx"],
   "exclude": ["node_modules"]
 }
