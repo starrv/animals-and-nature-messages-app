@@ -16,14 +16,12 @@ export default function Header(){
 
     return(
         status==="authenticated" ? <header>
-            {status==="authenticated" ? <p className="user-info">You are signed in as {session?.user?.name}</p>: null}
+            <p className="user-info">You are signed in as {session?.user?.name}</p>: null}
             <Image style={{margin:"0 auto",textAlign:"center", display:"block",borderRadius:"5px"}} src={leaf} alt="leaf icon" width={50} height={50} />
             <h1>
                 Animals and Nature Messages
             </h1>
-            <Nav />
-             
-           
+            <Nav />   
         </header> : null
     );
 }
