@@ -1,5 +1,6 @@
 'use client';
 import Message from "./Message";
+import Search from "./Search";
 import {useState,useEffect} from 'react';
 import {useSession} from "next-auth/react";
 import {useRouter} from 'next/navigation';
@@ -7,6 +8,9 @@ import {useRouter} from 'next/navigation';
 export default function Messages(){
     const router=useRouter();
     const [messages,setMessages]=useState([]);
+    const [timer,setTimer]=useState(0);
+    const [filterBy,setFilterBy]=useState("");
+
     const {data:session}=useSession({
         required: true,
         onUnauthenticated() {
@@ -46,9 +50,28 @@ export default function Messages(){
         }
     }
 
+    function hasSubject(message, subject){
+        for(let i=0; i<message.mail.headers.length; i++){
+            if(message.mail.headers[i].name.toLowerCase()==="subject" && message.mail.headers[i].value.includes(subject)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function hasDate(message, date){
+        const formattedDate=new Date(message.mail.timestamp).toLocaleString('en-US').toString();
+        console.log("Date: ",date);
+        console.log("Formatted Date: ",formattedDate);
+        return formattedDate.includes(date);
+    }
+
     useEffect(()=>{
         getMessages()
-    },[session]);
+        setInterval(()=>{
+            setTimer(timer=>timer+1)
+        },30000);
+    },[session,timer]);
 
     let content=null;
     if(errorMsg){
@@ -59,7 +82,8 @@ export default function Messages(){
     }
     else{
         if(messages.length>0){
-            content=<div className="messages">{messages.map(msg =><Message message={msg} key={msg.id} />)}</div>
+            const filteredMessages=messages.filter(message=>filterBy==="" || hasSubject(message,filterBy) || hasDate(message,filterBy));
+            content=<div className="messages">{filteredMessages.map(msg =><Message message={msg} key={msg.id} />)}</div>
         }
         else{
            content=<div className="messages"><p className="no-messages">No Messages</p></div>
@@ -71,6 +95,7 @@ export default function Messages(){
             <h1>
                 Messages
             </h1>
+            <Search filterBy={filterBy} setFilterBy={setFilterBy} />
             {content}
         </>
     )

@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function MessageContent({content}){
 
     //format the email message so it is clear which data represents the text and images
@@ -57,12 +59,12 @@ export default function MessageContent({content}){
 
     const parsedContents=parseContent(content);
     const text=parsedContents?.plain;
-    const image=parsedContents.image;
+    const image=parsedContents?.image;
     
     return(
         <div className="message-content">
             {text ? <p>{atob(text)}</p> : null}
-            {image ? <img style={{width:'50%',height:'50%'}} src={`data:image/png;base64,${image}`} alt="user supplied image" /> : null}
+            {image ? <Image  width="200" height="200" placeholder={`data:image/png;base64,${image}`} src={`data:image/png;base64,${image}`} blurDataURL={`data:image/png;base64,${image}`} alt="user supplied image" /> : null}
         </div>
     );
 }
