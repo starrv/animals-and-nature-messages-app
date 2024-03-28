@@ -2,22 +2,16 @@
 import Message from "./Message";
 import Search from "./Search";
 import {useState,useEffect} from 'react';
-import {useSession} from "next-auth/react";
-import {useRouter} from 'next/navigation';
+import {useSession,signIn} from "next-auth/react";
 
 export default function Messages(){
-    const router=useRouter();
+  
     const [messages,setMessages]=useState([]);
     const [timer,setTimer]=useState(0);
     const [filterBy,setFilterBy]=useState("");
 
-    const {data:session}=useSession({
-        required: true,
-        onUnauthenticated() {
-            // The user is not authenticated, handle it here.
-            router.push("/");
-          }
-    });
+    const {data:session,status}=useSession();
+
     const [errorMsg,setErrorMsg]=useState("");
     const [loading,setLoading]=useState("loading....");
 
@@ -73,7 +67,7 @@ export default function Messages(){
         },30000);
     },[session,timer]);
 
-    let content=null;
+    let content;
     if(errorMsg){
         content=<div className="messages"><p className="error-msg">{errorTxt}</p></div>
     }
@@ -83,7 +77,7 @@ export default function Messages(){
     else{
         if(messages.length>0){
             const filteredMessages=messages.filter(message=>filterBy==="" || hasSubject(message,filterBy) || hasDate(message,filterBy));
-            content=<div className="messages">{filteredMessages.map(msg =><Message message={msg} key={msg.id} />)}</div>
+            content=<><Search filterBy={filterBy} setFilterBy={setFilterBy} /><div className="messages">{filteredMessages.map(msg =><Message message={msg} key={msg.id} />)}</div></>
         }
         else{
            content=<div className="messages"><p className="no-messages">No Messages</p></div>
@@ -91,11 +85,8 @@ export default function Messages(){
     }
 
     return(
-        <>
-            <h1>
-                Messages
-            </h1>
-            <Search filterBy={filterBy} setFilterBy={setFilterBy} />
+       <>
+            
             {content}
         </>
     )
