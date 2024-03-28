@@ -94,6 +94,7 @@ input,button{
   text-decoration: none;
   text-align: center;
   font-size:1.5rem;
+  padding:0;
 }
 
 .nav-bar{
@@ -102,6 +103,7 @@ input,button{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: baseline;
 }
 
 .login,.logout{
@@ -149,5 +151,6 @@ input,button{
   }
   .nav-bar{
     flex-direction: column;
+    justify-content: start;
   }
 }
