@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import OktaProvider from "next-auth/providers/okta";
 
-export const authOptions = {
+const authOptions = {
   // Configure one or more authentication providers
   providers: [
     OktaProvider({
