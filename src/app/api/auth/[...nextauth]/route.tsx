@@ -5,11 +5,10 @@ const authOptions = {
   // Configure one or more authentication providers
   providers: [
     OktaProvider({
-        clientId: process.env.CLIENT_ID,
-        clientSecret:process.env.CLIENT_SECRET,
+        clientId: process.env.CLIENT_ID || "",
+        clientSecret: process.env.CLIENT_SECRET || "",
         issuer: process.env.ISSUER,
-        redirectUri:process.env.AUTHORIZATION_CALLBACK,
-        idToken:true,
+        idToken: true,
         checks: ["pkce","state"],
         authorization: { 
           params: { 
