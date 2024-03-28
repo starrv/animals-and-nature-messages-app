@@ -5,10 +5,10 @@ export const authOptions = {
   // Configure one or more authentication providers
   providers: [
     OktaProvider({
-        clientId: process.env.NEXT_PUBLIC_CLIENT_ID,
-        clientSecret:process.env.NEXT_PUBLIC_CLIENT_SECRET,
-        issuer: process.env.NEXT_PUBLIC_ISSUER,
-        redirectUri:process.env.NEXT_PUBLIC_AUTHORIZATION_CALLBACK,
+        clientId: process.env.CLIENT_ID,
+        clientSecret:process.env.CLIENT_SECRET,
+        issuer: process.env.ISSUER,
+        redirectUri:process.env.AUTHORIZATION_CALLBACK,
         idToken:true,
         checks: ["pkce","state"],
         authorization: { 
@@ -33,15 +33,15 @@ export const authOptions = {
       const hasTokenExpired=dateNow>tokenExp;
     
       if(hasTokenExpired){
-        const resp=await fetch(process.env.NEXT_PUBLIC_TOKEN_URL,{
+        const resp=await fetch(TOKEN_URL,{
           method:"POST",
           headers:{
             "accept":"application/json",
-            "authorization":`Basic ${process.env.NEXT_PUBLIC_CLIENT_SECRET_BASE_64}`,
+            "authorization":`Basic ${process.env.CLIENT_SECRET_BASE_64}`,
             "cache-control":"no-cache",
             "content-type":"application/x-www-form-urlencoded"
           },
-          body:`grant_type=refresh_token&redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URL}&scope=offline_access%20openid&refresh_token=${token.refreshToken}`
+          body:`grant_type=refresh_token&redirect_uri=${process.env.REDIRECT_URL}&scope=offline_access%20openid&refresh_token=${token.refreshToken}`
       });
       const newTokens=await resp.json();
       token.accessToken=newTokens.access_token;
@@ -58,7 +58,7 @@ export const authOptions = {
       return session
     }
   },
-  secret:process.env.NEXT_PUBLIC_SECRET
+  secret:process.env.SECRET
 }
 const handler=NextAuth(authOptions);
 export {handler as GET, handler as POST}
