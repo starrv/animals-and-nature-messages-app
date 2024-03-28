@@ -82,7 +82,7 @@ input,button{
 }
 
 .message{
-  width:25%;
+  width:300px;
   border:solid 1px black;
   background: radial-gradient(white,#e4f5e5);
 }
@@ -149,7 +149,7 @@ img{
   }
 }
 
-@media screen and (max-width:600px) {
+@media screen and (max-width:650px) {
   .message{
     width:75%;
   }
