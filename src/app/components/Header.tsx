@@ -13,7 +13,6 @@ export default function Header(){
             signIn('okta');
         }
     });
-    console.log("status: ",status);
     return(
         status==="authenticated" ? <header>
             <p className="user-info">You are signed in as {session?.user?.name}</p>

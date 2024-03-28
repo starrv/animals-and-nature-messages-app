@@ -18,7 +18,7 @@ export default function Messages(){
     const errorTxt="An error has occurred.  Please contact IT Support.";
     
     async function getMessages(){
-        const URL="http://localhost:8080/messages";
+        const URL=process.env.NEXT_PUBLIC_MESSAGES_URL;
         const accessToken=session?.accessToken;
 
         const resp=await fetch(URL,{
