@@ -15,7 +15,7 @@ export default function Header(){
     });
     console.log("status: ",status);
     return(
-        (status==="authenticated" && session?.user) ? <header>
+        status==="authenticated" ? <header>
             <p className="user-info">You are signed in as {session?.user?.name}</p>
             <Image style={{margin:"0 auto",textAlign:"center", display:"block",borderRadius:"5px"}} src={leaf} alt="leaf icon" width={50} height={50} />
             <h1>
