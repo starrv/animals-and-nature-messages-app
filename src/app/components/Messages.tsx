@@ -63,7 +63,7 @@ export default function Messages(){
 
     function hasSubject(message:Message, subject:string){
         for(let i=0; i<message.mail.headers.length; i++){
-            if(message.mail.headers[i].name.toLowerCase()==="subject" && message.mail.headers[i].value.includes(subject)){
+            if(message.mail.headers[i].name.toLowerCase()==="subject" && message.mail.headers[i].value.toLowerCase().includes(subject.toLowerCase())){
                 return true;
             }
         }
