@@ -85,6 +85,7 @@ input,button{
   width:300px;
   border:solid 1px black;
   background: radial-gradient(white,#e4f5e5);
+  box-sizing: border-box;
 }
 
  nav a,.login,.logout{
