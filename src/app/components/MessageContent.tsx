@@ -1,7 +1,6 @@
 import Image from 'next/image';
 
 export default function MessageContent({content}:{content:string}){
-    console.log("content: ",content);
     //format the email message so it is clear which data represents the text and images
     function parseContent(content:string){
         //look at String.prototype.match method
@@ -14,19 +13,14 @@ export default function MessageContent({content}:{content:string}){
             let i=0;
             const finalContents={plain:"",html:"",image:""};
             while(boundaries?.length && i<boundaries?.length){
-                console.log("boundary: ",boundaries[i]);
                 const boundaryDetails=boundaries[i].split("=");
-                console.log("boundary details: ",boundaryDetails);
                 const parsedBoundary=boundaryDetails[2].replaceAll('"','');
-                console.log("parsed boundary: ",parsedBoundary);
                 const relevantContents=content.split(parsedBoundary);
                 relevantContents.forEach((relevantContent:string)=>{
                     if(relevantContent.toLowerCase().includes("content-transfer-encoding: base64")){
                         if(i<boundaries.length-1 && relevantContent.includes(boundaries[i+1])){
                             const parsedSecondaryBoundary=boundaries[i+1].replaceAll('"','').split("=")[1];
-                            console.log("parsed secondary boundary: ",parsedSecondaryBoundary);
                             const secondaryRelevantContents=relevantContent.split(parsedSecondaryBoundary);
-                            console.log("secondary relevant contents: ",secondaryRelevantContents);
                             secondaryRelevantContents.forEach(secondaryRelevantContent=>{
                                 if(secondaryRelevantContent.toLowerCase().includes("content-transfer-encoding: base64")){
                                     if(secondaryRelevantContent.toLowerCase().includes('content-type: text/plain')){
@@ -62,7 +56,6 @@ export default function MessageContent({content}:{content:string}){
     }
 
     const parsedContents=parseContent(content);
-    console.log("parsed content: ",parsedContents);
     const text=parsedContents?.plain;
     const image=parsedContents?.image;
     

@@ -22,7 +22,7 @@ export interface Header{
 }
 
 let interval:ReturnType<typeof setInterval>;
-const fetchInterval=300000;
+const fetchInterval=30000;
 
 export default function Messages(){
   
@@ -75,8 +75,6 @@ export default function Messages(){
 
     function hasDate(message:Message, date:string){
         const formattedDate=new Date(message.mail.timestamp).toLocaleString('en-US').toString();
-        console.log("Date: ",date);
-        console.log("Formatted Date: ",formattedDate);
         return formattedDate.includes(date);
     }
 
