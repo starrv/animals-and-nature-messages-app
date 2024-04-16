@@ -4,7 +4,6 @@ import {useState} from "react";
 
 export default function Message({message}:{message:Message}){
 
-
     const [viewMore,setViewMore]=useState(false);
 
     function toggleViewMore(){

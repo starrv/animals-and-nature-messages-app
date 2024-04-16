@@ -22,6 +22,7 @@ export interface Header{
 }
 
 let interval:ReturnType<typeof setInterval>;
+const fetchInterval=300000;
 
 export default function Messages(){
   
@@ -84,7 +85,7 @@ export default function Messages(){
         if(!interval){
                 interval=setInterval(()=>{
                 setTimer(timer=>timer+1)
-            },30000);
+            },fetchInterval);
         }
     },[session,timer]);
 
