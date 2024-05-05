@@ -1,5 +1,6 @@
 'use client';
 
+import { auth } from "auth";
 import { useSession,SessionProvider } from "next-auth/react";
 import Header from "./Header";
 import Messages from "./Messages";
