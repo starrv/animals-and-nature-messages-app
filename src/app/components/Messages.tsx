@@ -39,6 +39,7 @@ export default function Messages(){
     
     async function getMessages(){
         const URL=process.env.NEXT_PUBLIC_MESSAGES_URL as string;
+        //@ts-ignore
         const accessToken=session?.accessToken;
 
         const resp=await fetch(URL,{
@@ -97,7 +98,7 @@ export default function Messages(){
     else{
         if(messages.length>0){
             const filteredMessages=messages.filter(message=>filterBy==="" || hasSubject(message,filterBy) || hasDate(message,filterBy));
-            content=<><Search filterBy={filterBy} setFilterBy={setFilterBy} /><div className="messages">{filteredMessages.map(msg =><Message message={msg} key={msg.id} />)}</div></>
+            content=<><Search filterBy={filterBy} setFilterBy={setFilterBy} /><div className="messages">{filteredMessages.map((msg:Message) =><Message message={msg} key={msg.id} />)}</div></>
         }
         else{
            content=<div className="messages"><p className="no-messages">No Messages</p></div>
