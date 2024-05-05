@@ -1,11 +1,8 @@
 import NextAuth from "next-auth";
 import OktaProvider from "next-auth/providers/okta";
 
-
-interface User{
-  name:string,
-  email:string,
-  image:string
+interface Session {
+  accessToken?: string
 }
 
 const authOptions = {
@@ -62,7 +59,7 @@ const authOptions = {
         return token;
       }
     },
-    async session({ session, token, user}){
+    async session({session, token, user}){
       // Send properties to the client, like an access_token from a provider.
       session.accessToken = token.accessToken;
       session.refreshToken = token.refreshToken;

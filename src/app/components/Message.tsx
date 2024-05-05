@@ -1,5 +1,5 @@
 import MessageContent from "./MessageContent";
-import {Message} from "./Messages";
+import type {Message} from "./Messages";
 import {useState} from "react";
 
 export default function Message({message}:{message:Message}){
