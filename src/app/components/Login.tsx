@@ -10,7 +10,7 @@ export default function Login(){
         body=(
             <>
                 
-                <button className="logout" onClick={()=>signOut({ callbackUrl: 'http://localhost:3000/' })}>Logout</button>
+                <button className="logout" onClick={()=>signOut({ callbackUrl: process.env.REDIRECT_URL })}>Logout</button>
             </>
            
         );
