@@ -106,8 +106,7 @@ export default function Messages(){
     }
 
     return(
-       <>
-            
+       <>  
             {content}
         </>
     )

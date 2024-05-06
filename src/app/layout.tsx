@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Content />
+        <Content session={undefined} />
         {children}
       </body>
     </html>

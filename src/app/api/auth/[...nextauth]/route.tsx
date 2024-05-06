@@ -1,10 +1,6 @@
 import NextAuth from "next-auth";
 import OktaProvider from "next-auth/providers/okta";
 
-interface Session {
-  accessToken?: string
-}
-
 const authOptions = {
   // Configure one or more authentication providers
   providers: [
