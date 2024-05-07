@@ -80,7 +80,7 @@ export default function Messages(){
     }
 
     useEffect(()=>{
-        getMessages()
+        getMessages();
         if(!interval){
                 interval=setInterval(()=>{
                 setTimer(timer=>timer+1)

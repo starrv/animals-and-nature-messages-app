@@ -12,9 +12,10 @@ export default function Content({session}){
     
     useEffect(()=>{
        redirect();
-    },[]);
+    });
 
     function redirect(){
+        console.log("redirect");
         let origin='';
         if(typeof window!="undefined"){
             origin=window.location.origin;
