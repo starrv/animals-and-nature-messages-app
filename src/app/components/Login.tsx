@@ -5,12 +5,13 @@ export default function Login(){
 
     const { data: session,status } = useSession()
     let body;
+    console.log("callback url: ",window.location.origin);
     
     if(status==="authenticated"){
         body=(
             <>
                 
-                <button className="logout" onClick={()=>signOut({ callbackUrl: process.env.REDIRECT_URL })}>Logout</button>
+                <button className="logout" onClick={()=>signOut({ callbackUrl: window.location.origin })}>Logout</button>
             </>
            
         );
