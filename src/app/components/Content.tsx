@@ -9,14 +9,21 @@ import Messages from "./Messages";
 //@ts-ignore
 export default function Content({session}){
     const router = useRouter();
-    let origin='';
-    if(typeof window!="undefined"){
-        origin=window.location.origin;
-    }
     
-    const BASE_URL="https://animals-and-nature-messages-app.vercel.app";
-    if(origin!==BASE_URL){
-        router.push(BASE_URL);
+    useEffect(()=>{
+       redirect();
+    },[]);
+
+    function redirect(){
+        let origin='';
+        if(typeof window!="undefined"){
+            origin=window.location.origin;
+        }
+        
+        const BASE_URL="https://animals-and-nature-messages-app.vercel.app";
+        if(origin!==BASE_URL){
+            router.push(BASE_URL);
+        }
     }
 
     return(
