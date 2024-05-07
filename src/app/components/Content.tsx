@@ -10,7 +10,7 @@ import Messages from "./Messages";
 export default function Content({session}){
     const router = useRouter();
     let origin='';
-    if(window!=undefined){
+    if(window){
         origin=window.location.origin;
     }
     
