@@ -5,7 +5,6 @@ export default function Login(){
 
     const { data: session,status } = useSession()
     let body;
-    console.log("callback url: ",window.location.origin);
     
     if(status==="authenticated"){
         body=(
