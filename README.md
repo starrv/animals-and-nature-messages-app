@@ -1,3 +1,3 @@
 # Animals and Nature Messages App
 
-This is a web application where administrators can read emails pertaining to the Animals and Nature message board.  Note:  You need an account to view messages.
+This is a complimentary web application, Animals and Nature Messages, where administrators could easily login and read customer feedback pertaining to Animals and Nature. You would need an adminstrator account to view messages. A Next.js application provides the user interface and OpenID Connect was used for authentication. Vercel was used for deployment of the user interface.
